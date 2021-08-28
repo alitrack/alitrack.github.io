@@ -17,6 +17,7 @@ google_analytics:   UA-180758632-1 # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
+# https://mycyberuniverse.com/syntax-highlighting-jekyll.html
 highlighter: rouge
 
 paginate:           5

@@ -19,6 +19,10 @@
   - title: Notebook Preview
     link: /nbpreview/
     show_on_mobile: false  
+  - title: SQLite Online
+    link: /sqlite/
+    show_on_mobile: false  
+    
 - title: About
   link: /about/
   show_on_mobile: true
