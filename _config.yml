@@ -17,6 +17,8 @@ google_analytics:   UA-180758632-1 # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
+highlighter: rouge
+
 paginate:           5
 paginate_path:      "/posts/page:num/"
 plugins:
@@ -26,7 +28,8 @@ plugins:
   - kramdown-syntax-coderay
 
 kramdown:
-  syntax_highlighter: coderay
+  syntax_highlighter: rouge
   syntax_highlighter_opts:
     line_numbers: table
     bold_every: 5
+    startinline: rue

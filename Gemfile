@@ -16,3 +16,4 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 
 gem "kramdown-syntax-coderay", "~> 1.0"
+gem "rouge"
