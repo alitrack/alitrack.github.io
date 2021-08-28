@@ -1,0 +1,27 @@
+- title: Home
+  link: /
+  show_on_mobile: true
+- title: Posts
+  link: /posts/
+  show_on_mobile: true
+- title: "tools"
+  link: "/tools/"
+  sublinks:
+  - title: Html Preview
+    link: /htmlpreview/
+    show_on_mobile: false  
+  - title: Python Editor
+    link: /thebe/
+    show_on_mobile: false
+  # - title: SQLite Viewer
+  #   link: /sqlite-viewer/
+  #   show_on_mobile: false  
+  - title: Notebook Preview
+    link: /nbpreview/
+    show_on_mobile: false  
+- title: About
+  link: /about/
+  show_on_mobile: true
+- title: Contact
+  link: /contact/
+  show_on_mobile: false

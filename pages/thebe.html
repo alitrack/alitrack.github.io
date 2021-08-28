@@ -1,0 +1,90 @@
+---
+layout: page
+overview: true
+title: "Python Editor"
+description: Wanna run Python code online?
+permalink: /thebe/
+form: true
+---
+
+
+<form id="previewform" onsubmit="location.href='?'+this.file.value;return false">
+Enter URL of the Python file to Execute: </br></br>
+
+<input type="url" id="file" value=""
+placeholder="e.g. https://github.com/matplotlib/matplotlib/blob/master/examples/misc/packed_bubbles.py" size="60"
+autofocus>
+<input type="submit" value="Load">
+</form>
+</br>
+or Just type code here:</br>
+<div id='code' class='align-left'>
+</div>
+<br/>
+<div style="text-align: right">Powered by: <a href='https://github.com/executablebooks/thebe'>thebelab</a></div>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/jquery@3.6.0/dist/jquery.js">
+</script>
+<!-- https://mybinder.org/v2/gh/psychemedia/jupyter-postgres-demo/master -->
+<!-- Configure and load Thebe !-->
+<script type="text/x-thebe-config">
+  {
+      // Whether thebe should automatically trigger the bootstrap upon page load
+      // if set to false, the page should contain some additional javascript
+      // responsible for triggering the javascript when desired (e.g. connected to a button click).
+    bootstrap: false,
+      
+      // arbitrary pre-render function called as part of bootstrap
+    //preRenderHook: true,
+    requestKernel: false, 
+
+    binderOptions: {
+      repo: "psychemedia/jupyter-postgres-demo",
+      binderUrl: "https://mybinder.org",
+      repoProvider: "github",
+    },
+    savedSession: {
+      // if enabled, thebe will store and try to re-use
+      // connections (with credentials!) to running servers
+      enabled: true,
+      maxAge: 86400, // the max age in seconds to consider re-using a session
+      storagePrefix: "alitrack-postgres-",
+    }, 
+  }
+</script>
+
+<script type="text/javascript" src="https://unpkg.com/thebe@latest">
+</script>
+
+<script type="text/javascript">
+  var init = function () {
+    thebelab.bootstrap();
+    var thebeInitCells = document.querySelectorAll('.thebelab-init');
+    console.log("Initializing Thebe with cell: " + thebeInitCells.length);
+    thebeInitCells.forEach((cell) => {
+      console.log("Initializing Thebe with cell: " + cell.id);
+      const initButton = cell.querySelector('.thebelab-run-button');
+      initButton.click();
+    });
+  }
+  var url = location.search.substring(1).replace(/\/\/github\.com/, '//raw.githubusercontent.com').replace(/\/blob\//, '/');
+
+  if (url == "") {
+    code = ' <pre data-executable="true" data-language="python"></pre>'
+      $('#code').html(code);
+    init();
+  }
+  else {
+    $.get(url, function (data) {
+      code = ' <pre data-executable="true" data-language="python">' + data + '</pre>'
+      $('#code').html(code);
+      init();
+    });
+  }
+</script>
+

@@ -1,0 +1,18 @@
+---
+layout: page
+overview: true
+title: "HTML Preview"
+permalink: /htmlpreview/
+form: true
+---
+
+
+	Enter URL of the HTML file to preview:<br />
+	<form id="previewform" onsubmit="location.href='?'+this.file.value;return false">
+		<input type="url" id="file" value="" placeholder="e.g. https://github.com/user/repo/blob/master/index.html"
+			size="60" autofocus>
+		<input type="submit" value="Preview">
+	</form>
+	<script src="{{ 'assets/htmlpreview.js' | relative_url }}"></script>
+<hr/>
+<div id="htmlpreviewdiv"></div>

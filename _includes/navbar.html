@@ -1,0 +1,72 @@
+<!-- mainNav -->
+<!-- https://mycyberuniverse.com/jekyll-bootstrap-dynamic-mainNav-highlighting-active-element.html -->
+
+ <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="{{"/" | relative_url }}">{{ site.title | escape }}</a>
+    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="Responsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle mainNav">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+  {% for p in site.data.primary_nav -%}
+
+  {% if p.sublinks %}
+  <li class="dropdown nav-item">
+      <a href="{{ p.link | relative_url }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ p.title }} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          {% for sublink in p.sublinks %}
+              {% if sublink.title == 'separator' %}
+                  <li role="separator" class="divider"></li>
+              {% else %}
+                  <li>
+                      <a class="nav-link" href="{{ sublink.link | relative_url }}">{{ sublink.title }}</a>
+                  </li>
+              {% endif %}
+          {% endfor %}
+      </ul>
+  </li>
+{% else %} 
+  <li class="nav-item" 
+    {%- if p.link == '/' -%}
+      {% if page.url == p.link %} class="current" {%- endif -%}
+    {% else -%}
+      {% if page.url contains p.link %} class="current" {%- endif -%}
+    {% endif -%}
+
+  ><a class="nav-link" href="{{ p.link | relative_url }}">{{ p.title }}</a></li>
+  {% endif %}
+  {% endfor -%}
+</ul>
+</div>
+</div>
+</nav>  
+
+
+
+
+<style>
+
+
+#mainNav {
+    min-height: 70px !important;
+    padding-top: 10px;
+}
+#mainNav .navbar-brand {
+    padding-right: 28px;
+    width: 280px;
+    border-right: 3px solid rgba(255, 255, 255, 0.1);
+    font-family: "hobo-std", sans-serif;
+    font-style: italic;
+    font-size: 26px !important;
+    color: #5fcf80 !important;
+}
+#mainNav .navbar-brand .site-logo {
+    float: left;
+    margin-top: -10px;
+    margin-right: 1rem;
+    width: 250px;
+}
+
+</style>
