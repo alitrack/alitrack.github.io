@@ -25,7 +25,7 @@ plugins:
   - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
 
 kramdown:
-  syntax_highlighter: rouge
+  syntax_highlighter: coderay
   syntax_highlighter_opts:
     line_numbers: table
     bold_every: 5

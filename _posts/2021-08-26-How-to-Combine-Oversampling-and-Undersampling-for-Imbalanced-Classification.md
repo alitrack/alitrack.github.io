@@ -102,13 +102,6 @@ model = DecisionTreeClassifier()
 曲线下的ROC面积（AUC）度量可用于估计模型的性能。虽然它确实正确显示了模型性能的相对改进，但对于严重不平衡的数据集可能是乐观的。
 
 ```python
-# define evaluation procedure
-cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
-# evaluate model
-scores = cross_val_score(model, X, y, scoring='roc_auc', cv=cv, n_jobs=-1)
-# summarize performance
-print('Mean ROC AUC: %.3f' % mean(scores))
-结合在一起，下面的示例将评估不平衡分类数据集上的决策树模型。
 # evaluates a decision tree model on the imbalanced dataset
 from numpy import mean
 from sklearn.datasets import make_classification
@@ -510,7 +503,5 @@ Mean ROC AUC: 0.856
 
 — [平衡机器学习训练数据的几种方法行为的研究](https://dl.acm.org/citation.cfm?id=1007735)，2004年。
 
-
 - 编译：Florence Wong – AICUG
-
 - 原文链接：https://zhuanlan.zhihu.com/p/159080497
